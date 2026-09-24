@@ -1,0 +1,24 @@
+{
+  "as_of": "2026-09-24",
+  "unit": "USD per million tokens",
+  "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "notes": [
+    "Unless a model lists its own rate: cache writes cost 1.25x the input price with the 5-minute TTL and 2x with the 1-hour TTL, cache reads 0.1x.",
+    "`match` is a model id; dated snapshots such as claude-haiku-4-5-20251001 match their base id.",
+    "`fast` multiplies every rate for responses served in fast mode.",
+    "A model missing here is reported as unpriced instead of guessed. Add it with the rates from the source page."
+  ],
+  "models": [
+    {"match": "claude-fable-5-1",  "input": 10, "output": 50, "cache_read": 0.25},
+    {"match": "claude-fable-5",    "input": 10, "output": 50},
+    {"match": "claude-mythos-5",   "input": 10, "output": 50},
+    {"match": "claude-opus-5-5",   "input": 4,  "output": 20, "cache_read": 0.2, "fast": 2},
+    {"match": "claude-opus-5",     "input": 5,  "output": 25, "fast": 2},
+    {"match": "claude-opus-4-8",   "input": 5,  "output": 25},
+    {"match": "claude-opus-4-7",   "input": 5,  "output": 25},
+    {"match": "claude-opus-4-6",   "input": 5,  "output": 25},
+    {"match": "claude-sonnet-5",   "input": 2,  "output": 10},
+    {"match": "claude-sonnet-4-6", "input": 3,  "output": 15},
+    {"match": "claude-haiku-4-5",  "input": 1,  "output": 5}
+  ]
+}
