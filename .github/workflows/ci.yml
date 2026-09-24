@@ -1,0 +1,41 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Ubuntu, bash 5
+            os: ubuntu-latest
+            bash: bash
+          - name: macOS, bash 3.2
+            os: macos-latest
+            bash: /bin/bash          # the bash that ships with macOS
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tool versions
+        run: |
+          ${{ matrix.bash }} --version | head -n 1
+          jq --version
+          git --version
+          python3 --version
+
+      - name: ShellCheck
+        if: runner.os == 'Linux'
+        run: shellcheck statusline.sh install.sh tools/bench.sh
+
+      - name: Tests
+        env:
+          STATUSLINE_BASH: ${{ matrix.bash }}
+        run: python3 -m unittest discover -s test -v

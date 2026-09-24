@@ -1,0 +1,16 @@
+{
+  "model": {"id": "claude-opus-5-5", "display_name": "Opus 5.5 (1M context)"},
+  "workspace": {"current_dir": "/path/to/my-app"},
+  "context_window": {"used_percentage": 34.2},
+  "effort": {"level": "high"},
+  "cost": {"total_cost_usd": 3.42, "total_lines_added": 156, "total_lines_removed": 23,
+           "total_duration_ms": 4320000},
+  "pr": {"number": 42, "review_state": "approved"},
+  "prompt_cache": {"warm": true, "ttl": "1h", "expires_at": 1790002850, "hit_ratio": 0.961},
+  "fast_mode": false,
+  "thinking": {"enabled": true},
+  "rate_limits": {
+    "five_hour": {"used_percentage": 24, "resets_at": 1790007860},
+    "seven_day": {"used_percentage": 41, "resets_at": 1790270000}
+  }
+}
