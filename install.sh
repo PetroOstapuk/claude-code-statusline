@@ -20,7 +20,7 @@ MARKER="claude-code-statusline"          # present in the header of statusline.s
 say()  { printf '%s\n' "$*"; }
 warn() { printf 'install.sh: %s\n' "$*" >&2; }
 die()  { warn "$*"; exit 1; }
-tilde() { printf '%s' "${1/#$HOME/\~}"; }
+tilde() { local t='~'; printf '%s' "${1/#"$HOME"/$t}"; }   # bash 3.2 would keep a \~
 
 usage() {
   cat <<'EOF'
