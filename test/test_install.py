@@ -40,6 +40,12 @@ class Install(SandboxTestCase):
         self.assertTrue(self.config.exists())
         self.assertNotIn("ISSUE_URL=", self.config_text())
 
+    def test_paths_are_shown_with_a_tilde(self):
+        out = self.run_install().stdout
+        self.assertIn("linked ~/.claude/statusline.sh -> ", out)
+        self.assertNotIn("\\~", out)
+        self.assertNotIn(str(self.home), out)
+
     def test_copy_mode(self):
         self.run_install("--copy")
         self.assertFalse(self.target.is_symlink())
